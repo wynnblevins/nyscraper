@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const app = express();
 const db = require('./models');
 const mongoose = require('mongoose');
@@ -17,13 +17,11 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-
-
-// Define any API routes before this runs
 require('./controllers/articlesController')(app, db);
 require('./controllers/notesController')(app, db);
 require('./controllers/scraperController')(app, cheerio, request)
 
+// Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
