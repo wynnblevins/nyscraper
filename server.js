@@ -8,6 +8,12 @@ const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const request = require('request');
 
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlinesReact";
+
+// Connect to the Mongo DB
+mongoose.connect(MONGODB_URI);
+
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
