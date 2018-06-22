@@ -12,8 +12,12 @@ class SavedArticle extends Component {
     console.log('inside add note method.');
   }
 
-  onNoteDeleteClick = () => {
-    console.log('inside delete note method.');
+  onNoteDeleteClick = (articleid) => {
+    fetch(`/api/articles/${articleid}`, {
+      method: 'DELETE'
+    }).then(() => {
+      window.location.reload();
+    });
   }
 
   render = () => {
@@ -23,7 +27,7 @@ class SavedArticle extends Component {
         
         <NoteDialog></NoteDialog>
         <Button variant="contained" color="secondary" onClick={() => {
-          this.onNoteDeleteClick();
+          this.onNoteDeleteClick(this.props.articleid);
         }}>Remove</Button>
       </div>
     );

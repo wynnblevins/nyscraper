@@ -20,7 +20,8 @@ class SavedView extends Component {
       <div>
         <div id="savedArticlesWrapper">
           {this.state.savedArticles.map((article, i) => (
-            <SavedArticle key={i} name={article.title}></SavedArticle> 
+            <SavedArticle key={i} articleid={article._id} 
+              name={article.title}></SavedArticle> 
           ))}
         </div>
       </div>

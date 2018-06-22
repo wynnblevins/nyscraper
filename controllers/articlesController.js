@@ -16,7 +16,7 @@ module.exports = function (app, db) {
     });
   });
 
-  app.delete('/api/articles', function (req, res) {
+  app.delete('/api/articles/:articleId', function (req, res) {
     let articleId = req.params.articleId;
     
     db.Article.remove({ _id: articleId }, function(err) {
